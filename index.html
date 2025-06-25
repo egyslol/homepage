@@ -1,15 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SG60: Rewind Singapore</title>
+  <title>SG60: Game Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .card {
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       transform-origin: center center;
+    }
+
+    .card:hover {
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
     }
 
     #carousel {
@@ -24,44 +28,41 @@
     }
   </style>
 </head>
-<body class="bg-gray-100 font-sans flex flex-col items-center min-h-screen pb-20">
-  <!-- Banner -->
-  <div class="w-full bg-red-600 text-white text-center py-4 text-3xl font-bold shadow-md">
-    SG60: Rewind Singapore
-  </div>
+<body class="bg-gradient-to-b from-red-100 via-white to-red-50 font-sans flex flex-col items-center min-h-screen pb-24">
+
+  <!-- Header -->
+  <header class="w-full bg-red-700 text-white text-center py-6 shadow-md">
+    <h1 class="text-4xl font-extrabold">🎮 SG60: Rewind Singapore</h1>
+    <p class="text-lg font-light mt-1">Dive into fun games celebrating our culture & history</p>
+  </header>
 
   <!-- Carousel -->
-  <div class="flex items-center justify-center w-full max-w-6xl py-10 px-6">
-    <div
-      id="carousel"
-      class="flex space-x-6 overflow-x-auto snap-x snap-mandatory w-full px-6 py-4"
-    >
+  <section class="w-full max-w-6xl mt-10 px-6">
+    <div id="carousel" class="flex space-x-6 overflow-x-auto snap-x snap-mandatory w-full py-4">
       <!-- Cards dynamically inserted -->
     </div>
-  </div>
+  </section>
 
+  <!-- Footer -->
+  <footer class="fixed bottom-0 w-full bg-red-700 text-white text-center py-3 text-base font-medium shadow-md z-50">
+    🎉 Brought to you by ITE College West – Red Dot Rewind
+  </footer>
+
+  <!-- Script for Cards -->
   <script>
     const carousel = document.getElementById('carousel');
 
     const cardData = [
-      { color: 'bg-red-500', text: 'Spot the Difference', textColor: 'text-white', image: 'spot.png' },
-      { color: 'bg-green-500', text: '360 Panaroma Tours', textColor: 'text-white', image: 'virtual.png' },
-      { color: 'bg-blue-500', text: 'Discover Our Local Food', textColor: 'text-white', image: 'food.png' },
-      { color: 'bg-yellow-400', text: 'Share Memories', textColor: 'text-black', image: 'memories.png' },
-      { color: 'bg-orange-500', text: 'Our SG Culture', textColor: 'text-white', image: 'culture.png' }
+      { color: 'bg-red-500', text: 'Spot the Difference', textColor: 'text-white', image: 'spot.png', link: 'Game2.html' },
+      { color: 'bg-green-500', text: '360 Panorama Tours', textColor: 'text-white', image: 'virtual.png', link: 'VR.html' },
+      { color: 'bg-blue-500', text: 'Discover Local Food', textColor: 'text-white', image: 'food.png', link: 'Game1.html' },
+      { color: 'bg-yellow-400', text: 'Share Memories', textColor: 'text-black', image: 'memories.png', link: 'AR.html' },
+      { color: 'bg-orange-500', text: 'Our SG Culture', textColor: 'text-white', image: 'culture.png', link: 'quiz.html' }
     ];
 
     cardData.forEach(data => {
-      data.link = {
-        'Spot the Difference': 'Game2.html',
-        '360 Panaroma Tours': 'VR.html',
-        'Discover Our Local Food': 'Game1.html',
-        'Share Memories': 'AR.html',
-        'Our SG Culture': 'quiz.html'
-      }[data.text];
-
       const card = document.createElement('div');
-      card.className = `card snap-center min-w-[300px] h-[400px] ${data.color} ${data.textColor} rounded-3xl shadow-xl flex flex-col items-center justify-center space-y-4 text-2xl font-bold cursor-pointer`;
+      card.className = `card snap-center min-w-[300px] h-[420px] ${data.color} ${data.textColor} rounded-3xl shadow-xl flex flex-col items-center justify-center space-y-4 text-2xl font-bold cursor-pointer`;
 
       const img = document.createElement('img');
       img.src = data.image;
@@ -97,15 +98,8 @@
     }
 
     carousel.addEventListener('scroll', updateRotation);
-
-    window.onload = () => {
-      updateRotation();
-    };
+    window.onload = updateRotation;
   </script>
 
-  <!-- Footer with smaller font -->
-  <div class="fixed bottom-0 w-full bg-red-600 text-white text-center py-4 text-xl font-bold shadow-md z-50">
-    brought to you by ITE College West: Red Dot Rewind
-  </div>
 </body>
 </html>
