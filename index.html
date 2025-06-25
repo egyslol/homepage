@@ -3,26 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SG60: Game Hub</title>
+  <title>SG60: Legends Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;800&display=swap" rel="stylesheet" />
   <style>
     body {
-      background: linear-gradient(to bottom, #fef6e4, #f0f4ff);
-      font-family: 'Fredoka', sans-serif;
-      color: #333;
+      font-family: 'Oxanium', sans-serif;
+      background: radial-gradient(circle at top center, #0d1b2a 0%, #000000 100%);
+      color: #e0eaff;
     }
 
     .card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
       transform-origin: center center;
-      border: 3px solid white;
-      background: linear-gradient(145deg, #fff, #e2e8f0);
+      border: 2px solid rgba(0, 183, 255, 0.4);
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      box-shadow: 0 0 10px rgba(0, 183, 255, 0.3);
     }
 
     .card:hover {
-      transform: scale(1.07) rotate(2deg);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transform: scale(1.06) rotate(1deg);
+      box-shadow: 0 0 25px rgba(0, 183, 255, 0.6);
+      border-color: #00b7ff;
     }
 
     #carousel {
@@ -36,31 +38,32 @@
       display: none;
     }
 
-    .fun-title {
-      font-size: 3rem;
-      font-weight: 700;
-      color: #ff6b6b;
-      text-shadow: 0 0 5px #ffd6d6;
+    .mlbb-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #00b7ff;
+      text-shadow: 0 0 10px #007acc;
     }
 
-    .fun-footer {
-      background-color: #ff6b6b;
+    .mlbb-sub {
+      color: #cbd5e1;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
 
-    .rainbow-text {
-      background: linear-gradient(45deg, #ff6b6b, #fcd34d, #4ade80, #60a5fa, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: bold;
+    .mlbb-footer {
+      background-color: #0f172a;
+      border-top: 2px solid #00b7ff;
     }
   </style>
 </head>
 <body class="flex flex-col items-center min-h-screen pb-24">
 
   <!-- Header -->
-  <header class="w-full py-8 text-center shadow-md bg-pink-100">
-    <h1 class="fun-title">🎉 SG60: Rewind Singapore 🎮</h1>
-    <p class="text-lg mt-2 rainbow-text tracking-wider">Explore fun games & local culture together!</p>
+  <header class="w-full py-8 text-center shadow-md border-b border-sky-500">
+    <h1 class="mlbb-title">SG60: LEGENDS HUB</h1>
+    <p class="mlbb-sub mt-1 text-sm">Battle through Singapore's history in style</p>
   </header>
 
   <!-- Carousel -->
@@ -71,8 +74,8 @@
   </section>
 
   <!-- Footer -->
-  <footer class="fun-footer fixed bottom-0 w-full text-center py-4 text-sm text-white tracking-wide z-50">
-    🧸 Created by ITE College West • Let's Play & Learn!
+  <footer class="mlbb-footer fixed bottom-0 w-full text-center py-4 text-xs text-sky-300 tracking-wider z-50">
+    ⚔️ Powered by ITE College West • Enter the Arena of SG Legends
   </footer>
 
   <!-- Script for Cards -->
@@ -80,26 +83,26 @@
     const carousel = document.getElementById('carousel');
 
     const cardData = [
-      { text: 'Spot the Difference', image: 'spot.png', link: 'Game2.html', color: 'bg-pink-300' },
-      { text: '360 Panorama Tours', image: 'virtual.png', link: 'VR.html', color: 'bg-sky-300' },
-      { text: 'Discover Local Food', image: 'food.png', link: 'Game1.html', color: 'bg-yellow-300' },
-      { text: 'Share Memories', image: 'memories.png', link: 'AR.html', color: 'bg-lime-300' },
-      { text: 'Our SG Culture', image: 'culture.png', link: 'quiz.html', color: 'bg-purple-300' }
+      { text: 'Spot the Difference', image: 'spot.png', link: 'Game2.html' },
+      { text: '360 Panorama Tours', image: 'virtual.png', link: 'VR.html' },
+      { text: 'Discover Local Food', image: 'food.png', link: 'Game1.html' },
+      { text: 'Share Memories', image: 'memories.png', link: 'AR.html' },
+      { text: 'Our SG Culture', image: 'culture.png', link: 'quiz.html' }
     ];
 
     cardData.forEach(data => {
       const card = document.createElement('div');
       card.className =
-        `card snap-center min-w-[280px] h-[400px] ${data.color} rounded-2xl flex flex-col items-center justify-center space-y-6 text-xl font-bold text-gray-700 cursor-pointer`;
+        `card snap-center min-w-[260px] h-[380px] rounded-xl flex flex-col items-center justify-center space-y-5 text-lg font-semibold text-sky-100 cursor-pointer`;
 
       const img = document.createElement('img');
       img.src = data.image;
       img.alt = data.text;
-      img.className = 'w-48 h-48 object-contain rounded-xl shadow-md';
+      img.className = 'w-44 h-44 object-contain rounded-md shadow-md';
 
       const title = document.createElement('div');
       title.textContent = data.text;
-      title.className = 'text-center uppercase tracking-wide';
+      title.className = 'text-center tracking-wider text-sky-400 uppercase';
 
       card.appendChild(img);
       card.appendChild(title);
@@ -121,7 +124,7 @@
         const maxRotation = 10;
         const rotation = Math.min(maxRotation, distance / 12);
         const direction = center > cardCenter ? 1 : -1;
-        const scale = 1 - Math.min(0.15, distance / 800);
+        const scale = 1 - Math.min(0.1, distance / 900);
         card.style.transform = `rotateY(${rotation * direction}deg) scale(${scale})`;
       });
     }
