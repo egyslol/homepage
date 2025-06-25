@@ -3,17 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SG60: Game Hub</title>
+  <title>SG60: Game Hub - DOOM Style</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    body {
+      background: linear-gradient(to bottom, #111111, #1a1a1a);
+      color: #e5e5e5;
+      font-family: 'Orbitron', sans-serif;
+    }
+
     .card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       transform-origin: center center;
+      background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+      border: 2px solid #ff0000;
     }
 
     .card:hover {
       transform: scale(1.05) rotate(1deg);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 10px 20px rgba(255, 0, 0, 0.4);
     }
 
     #carousel {
@@ -26,26 +34,41 @@
     #carousel::-webkit-scrollbar {
       display: none;
     }
+
+    .doom-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      color: #ff0000;
+      text-shadow: 0 0 15px #ff0000;
+    }
+
+    .doom-footer {
+      background-color: #111111;
+      border-top: 2px solid #ff0000;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap');
   </style>
 </head>
-<body class="bg-gradient-to-b from-red-100 via-white to-red-50 font-sans flex flex-col items-center min-h-screen pb-24">
+<body class="flex flex-col items-center min-h-screen pb-24">
 
   <!-- Header -->
-  <header class="w-full bg-red-700 text-white text-center py-6 shadow-md">
-    <h1 class="text-4xl font-extrabold">🎮 SG60: Rewind Singapore</h1>
-    <p class="text-lg font-light mt-1">Dive into fun games celebrating our culture & history</p>
+  <header class="w-full py-8 text-center border-b-2 border-red-700">
+    <h1 class="doom-title">SG60: REWIND SINGAPORE</h1>
+    <p class="text-red-400 text-xl mt-2 tracking-widest">Play. Explore. Conquer.</p>
   </header>
 
   <!-- Carousel -->
-  <section class="w-full max-w-6xl mt-10 px-6">
-    <div id="carousel" class="flex space-x-6 overflow-x-auto snap-x snap-mandatory w-full py-4">
+  <section class="w-full max-w-7xl mt-12 px-6">
+    <div id="carousel" class="flex space-x-8 overflow-x-auto snap-x snap-mandatory w-full py-6">
       <!-- Cards dynamically inserted -->
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="fixed bottom-0 w-full bg-red-700 text-white text-center py-3 text-base font-medium shadow-md z-50">
-    🎉 Brought to you by ITE College West – Red Dot Rewind
+  <footer class="doom-footer fixed bottom-0 w-full text-center py-4 text-sm text-red-500 tracking-wide z-50">
+    ⚔️ Brought to you by ITE College West – Red Dot Rewind • Inspired by DOOM Eternal
   </footer>
 
   <!-- Script for Cards -->
@@ -53,24 +76,26 @@
     const carousel = document.getElementById('carousel');
 
     const cardData = [
-      { color: 'bg-red-500', text: 'Spot the Difference', textColor: 'text-white', image: 'spot.png', link: 'Game2.html' },
-      { color: 'bg-green-500', text: '360 Panorama Tours', textColor: 'text-white', image: 'virtual.png', link: 'VR.html' },
-      { color: 'bg-blue-500', text: 'Discover Local Food', textColor: 'text-white', image: 'food.png', link: 'Game1.html' },
-      { color: 'bg-yellow-400', text: 'Share Memories', textColor: 'text-black', image: 'memories.png', link: 'AR.html' },
-      { color: 'bg-orange-500', text: 'Our SG Culture', textColor: 'text-white', image: 'culture.png', link: 'quiz.html' }
+      { text: 'Spot the Difference', image: 'spot.png', link: 'Game2.html' },
+      { text: '360 Panorama Tours', image: 'virtual.png', link: 'VR.html' },
+      { text: 'Discover Local Food', image: 'food.png', link: 'Game1.html' },
+      { text: 'Share Memories', image: 'memories.png', link: 'AR.html' },
+      { text: 'Our SG Culture', image: 'culture.png', link: 'quiz.html' }
     ];
 
     cardData.forEach(data => {
       const card = document.createElement('div');
-      card.className = `card snap-center min-w-[300px] h-[420px] ${data.color} ${data.textColor} rounded-3xl shadow-xl flex flex-col items-center justify-center space-y-4 text-2xl font-bold cursor-pointer`;
+      card.className =
+        `card snap-center min-w-[280px] h-[400px] rounded-xl flex flex-col items-center justify-center space-y-6 text-xl font-bold text-white cursor-pointer`;
 
       const img = document.createElement('img');
       img.src = data.image;
       img.alt = data.text;
-      img.className = 'w-64 h-64 object-contain';
+      img.className = 'w-52 h-52 object-contain rounded';
 
       const title = document.createElement('div');
       title.textContent = data.text;
+      title.className = 'text-center uppercase tracking-wider text-red-500';
 
       card.appendChild(img);
       card.appendChild(title);
@@ -92,7 +117,7 @@
         const maxRotation = 15;
         const rotation = Math.min(maxRotation, distance / 10);
         const direction = center > cardCenter ? 1 : -1;
-        const scale = 1 - Math.min(0.3, distance / 1000);
+        const scale = 1 - Math.min(0.2, distance / 1000);
         card.style.transform = `rotateY(${rotation * direction}deg) scale(${scale})`;
       });
     }
@@ -103,3 +128,4 @@
 
 </body>
 </html>
+
