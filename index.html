@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SG60: Legends Hub</title>
+  <title>SG60: Rewind Singapore</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;800&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Oxanium', sans-serif;
-      background: radial-gradient(circle at top center, #0d1b2a 0%, #000000 100%);
-      color: #e0eaff;
+      background: #ffffff;
+      color: #1f2937;
     }
 
     .card {
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       transform-origin: center center;
-      border: 2px solid rgba(0, 183, 255, 0.4);
-      background: linear-gradient(145deg, #1e293b, #0f172a);
-      box-shadow: 0 0 10px rgba(0, 183, 255, 0.3);
+      border: 2px solid rgba(255, 0, 0, 0.4);
+      background: linear-gradient(145deg, #f3f4f6, #ffffff);
+      box-shadow: 0 0 8px rgba(255, 0, 0, 0.15);
     }
 
     .card:hover {
       transform: scale(1.06) rotate(1deg);
-      box-shadow: 0 0 25px rgba(0, 183, 255, 0.6);
-      border-color: #00b7ff;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+      border-color: #ff1a1a;
     }
 
     #carousel {
@@ -42,26 +42,26 @@
       font-size: 2.8rem;
       font-weight: 800;
       letter-spacing: 2px;
-      color: #00b7ff;
-      text-shadow: 0 0 10px #007acc;
+      color: #e11d48;
+      text-shadow: 0 0 8px #fca5a5;
     }
 
     .mlbb-sub {
-      color: #cbd5e1;
+      color: #6b7280;
       font-weight: 600;
       letter-spacing: 1px;
     }
 
     .mlbb-footer {
-      background-color: #0f172a;
-      border-top: 2px solid #00b7ff;
+      background-color: #fef2f2;
+      border-top: 2px solid #e11d48;
     }
   </style>
 </head>
 <body class="flex flex-col items-center min-h-screen pb-24">
 
   <!-- Header -->
-  <header class="w-full py-8 text-center shadow-md border-b border-sky-500">
+  <header class="w-full py-8 text-center shadow-md border-b border-rose-400 bg-rose-50">
     <h1 class="mlbb-title">SG60: LEGENDS HUB</h1>
     <p class="mlbb-sub mt-1 text-sm">Battle through Singapore's history in style</p>
   </header>
@@ -74,8 +74,8 @@
   </section>
 
   <!-- Footer -->
-  <footer class="mlbb-footer fixed bottom-0 w-full text-center py-4 text-xs text-sky-300 tracking-wider z-50">
-    ⚔️ Powered by ITE College West • Enter the Arena of SG Legends
+  <footer class="mlbb-footer fixed bottom-0 w-full text-center py-4 text-xs text-rose-700 tracking-wider z-50">
+    ❤️ Powered by ITE College West • Enter the Arena of SG Legends
   </footer>
 
   <!-- Script for Cards -->
@@ -93,7 +93,7 @@
     cardData.forEach(data => {
       const card = document.createElement('div');
       card.className =
-        `card snap-center min-w-[260px] h-[380px] rounded-xl flex flex-col items-center justify-center space-y-5 text-lg font-semibold text-sky-100 cursor-pointer`;
+        `card snap-center min-w-[260px] h-[380px] rounded-xl flex flex-col items-center justify-center space-y-5 text-lg font-semibold text-rose-800 cursor-pointer`;
 
       const img = document.createElement('img');
       img.src = data.image;
@@ -102,7 +102,7 @@
 
       const title = document.createElement('div');
       title.textContent = data.text;
-      title.className = 'text-center tracking-wider text-sky-400 uppercase';
+      title.className = 'text-center tracking-wider text-rose-600 uppercase';
 
       card.appendChild(img);
       card.appendChild(title);
