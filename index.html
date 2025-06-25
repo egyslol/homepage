@@ -9,15 +9,38 @@
   <style>
     body {
       font-family: 'Oxanium', sans-serif;
-      background: linear-gradient(to bottom, #ffe5e5, #fff5f5);
       color: #1f2937;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, #ffe5e5, #fff5f5, #ffe0e0);
+      background-size: 400% 400%;
+      animation: bgMove 15s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes bgMove {
+      0%, 100% {
+        background-position: 30% 30%;
+      }
+      50% {
+        background-position: 70% 70%;
+      }
     }
 
     .card {
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       transform-origin: center center;
       border: 2px solid rgba(255, 0, 0, 0.4);
-      background: linear-gradient(145deg, #fdf2f2, #fff);
+      background: linear-gradient(145deg, #fdf2f2, #ffffff);
       box-shadow: 0 0 8px rgba(255, 0, 0, 0.15);
     }
 
